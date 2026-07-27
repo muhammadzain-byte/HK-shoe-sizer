@@ -1,0 +1,17 @@
+{
+  "dataset_id": "footgait3d",
+  "attempted": true,
+  "downloaded": false,
+  "files_downloaded": 0,
+  "bytes_downloaded": 0,
+  "manual_required": true,
+  "methods_tried": [],
+  "successful_method": null,
+  "links": [],
+  "issues": [
+    "Missing --accept-license and/or --explicit."
+  ],
+  "next_steps": [
+    "Review license and rerun with both flags, or download manually."
+  ]
+}

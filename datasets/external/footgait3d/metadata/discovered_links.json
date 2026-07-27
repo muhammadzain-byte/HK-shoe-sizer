@@ -1,0 +1,130 @@
+{
+  "dataset_id": "footgait3d",
+  "links_found": [
+    {
+      "url": "http://www.w3.org/1999/xlink",
+      "kind": "unknown"
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://apply.workable.com/huggingface/",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/datasets/ljw285/FootGait3D.png",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://de5282c3ca0c.edge.sdk.awswaf.com/de5282c3ca0c/526cf06acb0d/challenge.js",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://discuss.huggingface.co/",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://fonts.gstatic.com",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://github.com/huggingface",
+      "kind": "github"
+    },
+    {
+      "url": "https://huggingface.co/datasets/ljw285/FootGait3D",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://huggingface.co/docs/hub/datasets-data-files-configuration",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://js.stripe.com/v3/",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://arxiv.org/abs/2507.11037",
+      "kind": "unknown"
+    }
+  ],
+  "downloadable_automatically": [
+    {
+      "url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/datasets/ljw285/FootGait3D.png",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://discuss.huggingface.co/",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://huggingface.co/datasets/ljw285/FootGait3D",
+      "kind": "huggingface"
+    },
+    {
+      "url": "https://huggingface.co/docs/hub/datasets-data-files-configuration",
+      "kind": "huggingface"
+    }
+  ],
+  "manual_required": [
+    {
+      "url": "http://www.w3.org/1999/xlink",
+      "kind": "unknown"
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://apply.workable.com/huggingface/",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://de5282c3ca0c.edge.sdk.awswaf.com/de5282c3ca0c/526cf06acb0d/challenge.js",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://fonts.gstatic.com",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://github.com/huggingface",
+      "kind": "github"
+    },
+    {
+      "url": "https://js.stripe.com/v3/",
+      "kind": "unknown"
+    },
+    {
+      "url": "https://arxiv.org/abs/2507.11037",
+      "kind": "unknown"
+    }
+  ],
+  "issues": []
+}

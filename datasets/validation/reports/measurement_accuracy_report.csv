@@ -1,0 +1,1 @@
+image_path,validation_status,ground_truth_length_mm,ground_truth_width_mm,ai_length_mm,ai_width_mm,length_error_mm,width_error_mm,length_percent_error,width_percent_error,issues,notes

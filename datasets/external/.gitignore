@@ -1,0 +1,27 @@
+# External dataset payloads can be large and license-restricted.
+# Keep folder scaffolding and metadata, but do not commit downloaded data.
+raw/**
+processed/**
+!**/raw/
+!**/processed/
+!**/raw/.gitkeep
+!**/processed/.gitkeep
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.pt
+*.pth
+*.npy
+*.npz
+*.ply
+*.obj
+*.glb
+*.pkl
+*.jpg
+*.jpeg
+*.png
+*.exr
+*.tiff
+*.mp4
+*.avi

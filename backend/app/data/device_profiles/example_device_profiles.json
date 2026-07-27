@@ -1,0 +1,9 @@
+[
+  {
+    "device_family": "example_phone",
+    "camera_focal_length_mm": null,
+    "sensor_width_mm": null,
+    "calibrated": false,
+    "notes": "Example only. Device metadata alone is not used for real-world scale."
+  }
+]

@@ -1,0 +1,10 @@
+﻿{
+    "api_base_url":  "http://localhost:8010/api/v1",
+    "backend_origin":  "http://localhost:8010",
+    "health_url":  "http://localhost:8010/api/v1/health",
+    "frontend_url":  "http://localhost:3000",
+    "phone_test_url":  null,
+    "lan_testing":  false,
+    "lan_ip":  null,
+    "database_mode":  "sqlite_testing_fallback"
+}

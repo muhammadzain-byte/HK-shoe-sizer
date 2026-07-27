@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: juta-size-testing-postgres
+    environment:
+      POSTGRES_DB: juta_size
+      POSTGRES_USER: juta_user
+      POSTGRES_PASSWORD: juta_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - juta_size_testing_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  juta_size_testing_postgres_data:

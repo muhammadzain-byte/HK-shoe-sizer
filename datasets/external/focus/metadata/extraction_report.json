@@ -1,0 +1,13 @@
+{
+  "dataset_id": "focus_synfoot2_foot3d",
+  "attempted": true,
+  "extracted": true,
+  "archives_found": [
+    "C:\\Users\\zainm\\OneDrive\\Desktop\\JUTA SIZE\\datasets\\external\\focus\\raw\\1aU1Bf_pE7WjtWAX85ru9htQGygmTDIUV.download",
+    "C:\\Users\\zainm\\OneDrive\\Desktop\\JUTA SIZE\\datasets\\external\\focus\\raw\\1B0V5sRUBkj9kjv-q45jjYdSDiFEe3j-o.download"
+  ],
+  "files_extracted": 927,
+  "issues": [
+    "Skipped existing target: C:\\Users\\zainm\\OneDrive\\Desktop\\JUTA SIZE\\datasets\\external\\focus\\raw\\1B0V5sRUBkj9kjv-q45jjYdSDiFEe3j-o"
+  ]
+}

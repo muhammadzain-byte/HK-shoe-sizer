@@ -1,0 +1,17 @@
+{
+  "system": "EU",
+  "gender": "women",
+  "unit": "mm",
+  "source_note": "Initial generic chart for safe workflow testing. Replace with validated brand-specific charts before production.",
+  "sizes": [
+    {"size": "35", "min_length_mm": 220, "max_length_mm": 224, "regular_width_min_mm": 78, "regular_width_max_mm": 86},
+    {"size": "36", "min_length_mm": 225, "max_length_mm": 230, "regular_width_min_mm": 80, "regular_width_max_mm": 90},
+    {"size": "37", "min_length_mm": 231, "max_length_mm": 237, "regular_width_min_mm": 82, "regular_width_max_mm": 92},
+    {"size": "38", "min_length_mm": 238, "max_length_mm": 244, "regular_width_min_mm": 84, "regular_width_max_mm": 94},
+    {"size": "39", "min_length_mm": 245, "max_length_mm": 250, "regular_width_min_mm": 86, "regular_width_max_mm": 96},
+    {"size": "40", "min_length_mm": 251, "max_length_mm": 257, "regular_width_min_mm": 88, "regular_width_max_mm": 98},
+    {"size": "41", "min_length_mm": 258, "max_length_mm": 264, "regular_width_min_mm": 90, "regular_width_max_mm": 100},
+    {"size": "42", "min_length_mm": 265, "max_length_mm": 270, "regular_width_min_mm": 92, "regular_width_max_mm": 102},
+    {"size": "43", "min_length_mm": 271, "max_length_mm": 278, "regular_width_min_mm": 94, "regular_width_max_mm": 104}
+  ]
+}

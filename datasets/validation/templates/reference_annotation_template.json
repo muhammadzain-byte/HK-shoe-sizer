@@ -1,0 +1,40 @@
+{
+  "case_id": "",
+  "image_path": "",
+  "reference_object": {
+    "mode": "credit_card",
+    "known_width_mm": 85.6,
+    "known_height_mm": 53.98,
+    "bbox": {
+      "x": null,
+      "y": null,
+      "width": null,
+      "height": null
+    },
+    "polygon": [
+      {
+        "x": null,
+        "y": null
+      },
+      {
+        "x": null,
+        "y": null
+      },
+      {
+        "x": null,
+        "y": null
+      },
+      {
+        "x": null,
+        "y": null
+      }
+    ],
+    "source": "manual"
+  },
+  "ground_truth": {
+    "foot_length_mm": null,
+    "foot_width_mm": null,
+    "source": "manual_ruler",
+    "notes": ""
+  }
+}

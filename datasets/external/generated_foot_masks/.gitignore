@@ -1,0 +1,8 @@
+images/
+masks/
+metadata/
+manifests/*.json
+reports/*.json
+*.png
+*.jpg
+*.jpeg

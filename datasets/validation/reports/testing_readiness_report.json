@@ -1,0 +1,12 @@
+{
+  "db_ready": false,
+  "migration_status": null,
+  "validation_case_count": 0,
+  "benchmark_ready_count": 0,
+  "completed_benchmark_count": 0,
+  "accuracy_claim_allowed": false,
+  "reason_blocked": "At least 50 completed real-device benchmark cases are required.",
+  "next_steps": [
+    "Start the testing database, set DATABASE_URL, and run backend/scripts/apply_migrations.py."
+  ]
+}

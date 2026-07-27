@@ -1,0 +1,15 @@
+{
+  "case_count": 0,
+  "mean_length_error_mm": null,
+  "median_length_error_mm": null,
+  "max_length_error_mm": null,
+  "mean_width_error_mm": null,
+  "median_width_error_mm": null,
+  "max_width_error_mm": null,
+  "trusted_case_count": 0,
+  "rejected_case_count": 0,
+  "notes": [
+    "CSV has headers but no validation cases.",
+    "Sample/template cases are not accuracy evidence."
+  ]
+}

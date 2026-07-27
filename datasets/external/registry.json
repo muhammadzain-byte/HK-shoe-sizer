@@ -1,0 +1,139 @@
+{
+  "datasets": [
+    {
+      "id": "focus_synfoot2_foot3d",
+      "name": "FOCUS / SynFoot2 / Foot3D",
+      "repo_url": "https://github.com/OllieBoyne/FOCUS",
+      "project_url": "https://www.ollieboyne.com/FOCUS/",
+      "paper_url": "https://arxiv.org/abs/2502.06367",
+      "dataset_type": [
+        "synthetic_rgb",
+        "dense_correspondence",
+        "surface_normals",
+        "multi_view",
+        "3d_reconstruction"
+      ],
+      "intended_use": [
+        "research",
+        "segmentation_quality",
+        "landmark_quality",
+        "3d_reconstruction_research"
+      ],
+      "not_for": [
+        "production_accuracy_claims",
+        "real_phone_measurement_benchmark"
+      ],
+      "download_policy": "manual_or_explicit_script_only",
+      "license_review_required": true,
+      "local_raw_dir": "datasets/external/focus/raw",
+      "local_processed_dir": "datasets/external/focus/processed"
+    },
+    {
+      "id": "found_synfoot",
+      "name": "FOUND / SynFoot",
+      "repo_url": "https://github.com/OllieBoyne/FOUND",
+      "project_url": "https://www.ollieboyne.com/FOUND/",
+      "paper_url": "https://arxiv.org/abs/2310.18279",
+      "dataset_type": [
+        "synthetic_rgb",
+        "surface_normals",
+        "keypoints",
+        "masks",
+        "3d_reconstruction"
+      ],
+      "intended_use": [
+        "research",
+        "mask_supervision",
+        "keypoint_research",
+        "surface_normal_research"
+      ],
+      "not_for": [
+        "production_accuracy_claims",
+        "real_phone_measurement_benchmark"
+      ],
+      "download_policy": "manual_or_explicit_script_only",
+      "license_review_required": true,
+      "local_raw_dir": "datasets/external/found/raw",
+      "local_processed_dir": "datasets/external/found/processed"
+    },
+    {
+      "id": "find_foot3d",
+      "name": "FIND / Foot3D",
+      "repo_url": null,
+      "project_url": null,
+      "paper_url": "https://arxiv.org/abs/2210.12241",
+      "dataset_type": [
+        "3d_scans",
+        "foot_shape",
+        "geometry"
+      ],
+      "intended_use": [
+        "research",
+        "shape_prior",
+        "3d_geometry_validation"
+      ],
+      "not_for": [
+        "production_accuracy_claims",
+        "phone_capture_benchmark"
+      ],
+      "download_policy": "manual_via_related_repos_or_project_pages",
+      "license_review_required": true,
+      "local_raw_dir": "datasets/external/find_foot3d/raw",
+      "local_processed_dir": "datasets/external/find_foot3d/processed"
+    },
+    {
+      "id": "footgait3d",
+      "name": "FootGait3D",
+      "repo_url": null,
+      "project_url": "https://huggingface.co/datasets/ljw285/FootGait3D",
+      "paper_url": "https://arxiv.org/abs/2507.11037",
+      "dataset_type": [
+        "point_cloud",
+        "multi_view_depth",
+        "gait",
+        "foot_ankle"
+      ],
+      "intended_use": [
+        "research",
+        "depth_research",
+        "point_cloud_completion",
+        "ar_depth_validation"
+      ],
+      "not_for": [
+        "top_down_phone_measurement_benchmark",
+        "production_accuracy_claims"
+      ],
+      "download_policy": "manual_or_huggingface_explicit_script_only",
+      "license_review_required": true,
+      "local_raw_dir": "datasets/external/footgait3d/raw",
+      "local_processed_dir": "datasets/external/footgait3d/processed"
+    },
+    {
+      "id": "generated_foot_masks_from_focus",
+      "name": "Generated Foot Masks From FOCUS Meshes",
+      "repo_url": null,
+      "project_url": null,
+      "paper_url": "https://arxiv.org/abs/2502.06367",
+      "dataset_type": [
+        "synthetic_rgb",
+        "masks",
+        "quality_labels",
+        "mesh_projection"
+      ],
+      "intended_use": [
+        "research",
+        "mask_quality",
+        "segmentation_baseline"
+      ],
+      "not_for": [
+        "production_accuracy_claims",
+        "real_phone_measurement_benchmark",
+        "shoe_size_accuracy_claims"
+      ],
+      "download_policy": "generated_locally_from_focus_meshes",
+      "license_review_required": true,
+      "local_raw_dir": "datasets/external/generated_foot_masks",
+      "local_processed_dir": "datasets/external/generated_foot_masks/metadata"
+    }
+  ]
+}

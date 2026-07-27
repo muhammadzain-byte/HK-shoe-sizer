@@ -1,0 +1,17 @@
+{
+  "features": [
+    "area_ratio",
+    "bbox_aspect_ratio",
+    "solidity",
+    "rectangularity",
+    "contour_point_count",
+    "width_profile_mean",
+    "width_profile_std",
+    "lower_leg_risk_proxy",
+    "top_crop_risk_proxy",
+    "hole_ratio",
+    "component_count",
+    "toe_region_complexity_proxy"
+  ],
+  "research_only": true
+}

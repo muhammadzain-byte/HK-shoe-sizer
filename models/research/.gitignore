@@ -1,0 +1,8 @@
+**/*.pt
+**/*.pth
+**/*.joblib
+**/*.onnx
+**/*.bin
+!model_registry.json
+!README.md
+!**/feature_schema.json

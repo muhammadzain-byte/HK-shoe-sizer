@@ -1,0 +1,10 @@
+{
+  "dataset_id": "found_synfoot",
+  "attempted": true,
+  "extracted": false,
+  "archives_found": [],
+  "files_extracted": 0,
+  "issues": [
+    "No supported archives found."
+  ]
+}

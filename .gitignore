@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# Build output
+.next/
+out/
+dist/
+build/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Environment files
+.env
+.env.*
+!.env.example
+*.env.local
+backend.env.local
+frontend.env.local
+
+# Local runtime data and generated diagnostics
+/artifacts/
+/runtime/
+/storage/
+/backend/storage/
+/tmp/
+/measurement_metadata.json
+/output_metadata.json
+/barefoot.png
+
+# Research payloads and locally trained binaries
+/models/research/**/*.joblib
+/models/research/**/*.pt
+/models/research/**/*.pth
+/models/research/**/*.onnx
+/datasets/external/*/raw/**
+/datasets/external/*/processed/**
+/datasets/external/common/processed/**
+/datasets/external/common/manifests/*_manifest.json
+/datasets/external/common/reports/**
+/datasets/external/common/smoke_test/**
+/datasets/external/common/splits/**
+/datasets/external/*/metadata/repo_clone/**
+
+# Frontend generated state
+/frontend/audit-production.json
+/frontend/tsconfig.tsbuildinfo
+
+# Deployment secrets and certificates
+*.pem
+*.key
+*.crt
+infrastructure/production/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

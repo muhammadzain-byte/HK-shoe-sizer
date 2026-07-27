@@ -1,0 +1,55 @@
+{
+  "models": [
+    {
+      "id": "mask_quality_research_v1",
+      "task": "mask_quality",
+      "dataset_id": "",
+      "model_path": "",
+      "research_only": true,
+      "production_enabled": false,
+      "metrics": {},
+      "created_at": ""
+    },
+    {
+      "id": "mask_quality_found_synfoot_latest",
+      "task": "mask_quality",
+      "dataset_id": "found_synfoot",
+      "model_path": "",
+      "research_only": true,
+      "production_enabled": false,
+      "metrics": {
+        "sample_count": 0,
+        "status": "skipped"
+      },
+      "created_at": "2026-06-16T12:40:57.536420+00:00"
+    },
+    {
+      "id": "mask_quality_focus_synfoot2_foot3d_latest",
+      "task": "mask_quality",
+      "dataset_id": "focus_synfoot2_foot3d",
+      "model_path": "",
+      "research_only": true,
+      "production_enabled": false,
+      "metrics": {
+        "sample_count": 0,
+        "status": "skipped"
+      },
+      "created_at": "2026-06-16T12:40:57.598326+00:00"
+    },
+    {
+      "id": "mask_quality_research_generated_focus_v1",
+      "task": "mask_quality",
+      "dataset_id": "generated_foot_masks_from_focus",
+      "model_path": "C:\\Users\\zainm\\OneDrive\\Desktop\\JUTA SIZE\\models\\research\\mask_quality\\mask_quality_model.joblib",
+      "research_only": true,
+      "synthetic_research_only": true,
+      "not_accuracy_evidence": true,
+      "production_enabled": false,
+      "metrics": {
+        "sample_count": 1000,
+        "status": "trained"
+      },
+      "created_at": "2026-06-16T21:43:36.473788+00:00"
+    }
+  ]
+}

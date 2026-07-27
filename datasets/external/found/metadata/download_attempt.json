@@ -1,0 +1,980 @@
+{
+  "dataset_id": "found_synfoot",
+  "attempted": true,
+  "downloaded": true,
+  "files_downloaded": 5,
+  "bytes_downloaded": 6354818,
+  "manual_required": false,
+  "methods_tried": [
+    "git_clone_repo",
+    "gdown"
+  ],
+  "successful_method": "gdown_folder",
+  "links": [
+    {
+      "url": "http://ollieboyne.github.io/FOUND",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://github.com/OllieBoyne/FOUND",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "github",
+      "link_type": "github",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://www.jjcvision.com",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://drive.google.com/drive/folders/1XWmEVo3AdnhJU2fs6igls-emp93beQpm?usp=share_link",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "google_drive",
+      "link_type": "google_drive",
+      "text": "",
+      "automatic_download_possible": true,
+      "reason": "Google Drive may be automatic if gdown can access the public file/folder."
+    },
+    {
+      "url": "https://github.com/OllieBoyne/Foot3D",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "github",
+      "link_type": "github",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://github.com/OllieBoyne/SynFoot",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "github",
+      "link_type": "github",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://github.com/baegwangbin/surface_normal_uncertainty",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "github",
+      "link_type": "github",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://mi.eng.cam.ac.uk/~cipolla/",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ollieboyne.github.io",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ollieboyne.github.io/BlenderSynth",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ollieboyne.github.io/FIND",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ollieboyne.github.io/FOUND/",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ollieboyne.github.io/FOUND/images/itw/sliders.gif",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ollieboyne.github.io/FOUND/images/logos/found_v1.png",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.baegwangbin.com/",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.ollieboyne.com/FOCUS",
+      "source_page": "https://github.com/OllieBoyne/FOUND",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://www.eng.cam.ac.uk/",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://wacv2024.thecvf.com/",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://github.com/OllieBoyne/FOUND",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "github",
+      "link_type": "github",
+      "text": "Code",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://github.com/OllieBoyne/SynFoot",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "github",
+      "link_type": "github",
+      "text": "large photorealistic synthetic foot dataset",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://ollieboyne.github.io/BlenderSynth",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "BlenderSynth",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://ollieboyne.github.io/FIND",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "FIND",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://colmap.github.io",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "COLMAP",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://snapfeet.io/en/",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Trya Srl",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://kit.fontawesome.com/49f46e7382.js",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-YTZZ3MH48P",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.youtube.com/embed/nuYGfqg_fus?si=ymPTPyjmZWvB0jlb",
+      "source_page": "https://www.ollieboyne.com/FOUND/",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.cornell.edu/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://tech.cornell.edu/arxiv/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Learn about arXiv becoming an independent nonprofit.",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/about/ourmembers.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "member institutions",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/about/donate.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Donate",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/IgnoreMe",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/list/cs/recent",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "cs",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Help",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/advanced",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Advanced Search",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/login",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Login",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/about",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "About",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279v1",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "v1",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&query=Boyne,+O",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Oliver Boyne",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&query=Bae,+G",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Gwangbin Bae",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&query=Charles,+J",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "James Charles",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&query=Cipolla,+R",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Roberto Cipolla",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/pdf/2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "View PDF",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/html/2310.18279v2",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "HTML (experimental)",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279v2",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "arXiv:2310.18279v2",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "https://doi.org/10.48550/arXiv.2310.18279",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/show-email/86f719a5/2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "view email",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/abs/2310.18279v1",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "[v1]",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/src/2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "TeX Source",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "view license",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/prevnext?id=2310.18279&function=prev&context=cs.CV",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "<\u00a0prev",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/prevnext?id=2310.18279&function=next&context=cs.CV",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "next\u00a0>",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/list/cs.CV/new",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "new",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/list/cs.CV/recent",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "recent",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/list/cs.CV/2023-10",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "2023-10",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/abs/2310.18279?context=cs",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "cs",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "NASA ADS",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://scholar.google.com/scholar_lookup?arxiv_id=2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Google Scholar",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://api.semanticscholar.org/arXiv:2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Semantic Scholar",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://www.bibsonomy.org/BibtexHandler?requTask=upload&url=https://arxiv.org/abs/2310.18279&description=FOUND: Foot Optimization with Uncertain Normals for Surface Deformation Using Synthetic Data",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://reddit.com/submit?url=https://arxiv.org/abs/2310.18279&title=FOUND: Foot Optimization with Uncertain Normals for Surface Deformation Using Synthetic Data",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/labs/showcase.html#arxiv-bibliographic-explorer",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is the Explorer?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.connectedpapers.com/about",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is Connected Papers?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.litmaps.co/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is Litmaps?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.scite.ai/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What are Smart Citations?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://alphaxiv.org/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is alphaXiv?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.catalyzex.com",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is CatalyzeX?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://dagshub.com/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is DagsHub?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://gotit.pub/faq",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is GotitPub?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://huggingface.co/huggingface",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "huggingface",
+      "link_type": "huggingface",
+      "text": "What is Huggingface?",
+      "automatic_download_possible": true,
+      "reason": "Direct archive or Hugging Face link."
+    },
+    {
+      "url": "https://sciencecast.org/welcome",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is ScienceCast?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://replicate.com/docs/arxiv/about",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is Replicate?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://huggingface.co/docs/hub/spaces",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "huggingface",
+      "link_type": "huggingface",
+      "text": "What is Spaces?",
+      "automatic_download_possible": true,
+      "reason": "Direct archive or Hugging Face link."
+    },
+    {
+      "url": "https://txyz.ai",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is TXYZ.AI?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://influencemap.cmlab.dev/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What are Influence Flowers?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://core.ac.uk/services/recommender",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is CORE?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/labs/index.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Learn more about arXivLabs",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18279/auth/show-endorsers/2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Which authors of this paper are endorsers?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help/mathjax.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "What is MathJax?",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help/contact.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Contact",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help/subscribe",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Subscribe",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help/license/index.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Copyright",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help/policies/privacy_policy.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Privacy Policy",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://info.arxiv.org/help/web_accessibility.html",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "Web Accessibility Assistance",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://status.arxiv.org",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "arXiv Operational Status",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://madskills.com/public/xml/rss/module/trackback/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://purl.org/dc/elements/1.1/",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://www.bibsonomy.org/BibtexHandler?requTask=upload&amp;url=https://arxiv.org/abs/2310.18279&amp;description=FOUND:",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "http://www.w3.org/2000/svg",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/pdf/2310.18279",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&amp;query=Bae,+G",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&amp;query=Boyne,+O",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&amp;query=Charles,+J",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://arxiv.org/search/cs?searchtype=author&amp;query=Cipolla,+R",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://doi.org/10.48550/arXiv.2310.18279</a",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://reddit.com/submit?url=https://arxiv.org/abs/2310.18279&amp;title=FOUND:",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://static.arxiv.org/js/bibex-dev/bibex.css?20200709",
+      "source_page": "https://arxiv.org/abs/2310.18279",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    },
+    {
+      "url": "https://www.ollieboyne.com/FOUND/",
+      "source_page": "registry",
+      "kind": "unknown",
+      "link_type": "unknown",
+      "text": "registry",
+      "automatic_download_possible": false,
+      "reason": "Manual review or special downloader required."
+    }
+  ],
+  "issues": [
+    "Reusing existing repo clone cache: C:\\Users\\zainm\\OneDrive\\Desktop\\JUTA SIZE\\datasets\\external\\found\\metadata\\repo_clone"
+  ],
+  "next_steps": [
+    "Place official dataset files under datasets/external/found/raw if automatic access is blocked.",
+    "Inspect files, generate manifests, convert samples, then build splits.",
+    "Inspect files, generate manifests, convert samples, then build splits."
+  ],
+  "repo_clone_path": "C:\\Users\\zainm\\OneDrive\\Desktop\\JUTA SIZE\\datasets\\external\\found\\metadata\\repo_clone",
+  "repo_clone_data_file_count": 0,
+  "extraction": {
+    "dataset_id": "found_synfoot",
+    "attempted": true,
+    "extracted": false,
+    "archives_found": [],
+    "files_extracted": 0,
+    "issues": [
+      "No supported archives found."
+    ]
+  }
+}
