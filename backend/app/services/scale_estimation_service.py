@@ -102,6 +102,8 @@ class ScaleEstimationService:
                 self.estimate_from_calibration_mat(calibration_mat),
                 measurement_payload,
             )
+        if depth_metadata is None:
+            depth_metadata = self._depth_evidence_from_capture(capture_payload)
         if depth_metadata is not None:
             return self._with_real_world(
                 self.estimate_from_depth_metadata(
@@ -124,6 +126,18 @@ class ScaleEstimationService:
             ),
             measurement_payload,
         )
+
+    def _depth_evidence_from_capture(self, capture_payload: dict[str, Any]) -> dict[str, Any] | None:
+        """Return native AR evidence only; browser telemetry is never a scale source."""
+        metadata = self._as_payload(capture_payload.get("raw_device_metadata"))
+        mode = str(metadata.get("capture_mode") or "browser_guidance").lower()
+        evidence = self._as_payload(metadata.get("ar_evidence"))
+        if mode not in {"arcore", "arkit", "lidar"} or not evidence:
+            return None
+        evidence_mode = str(evidence.get("depth_mode") or "").lower()
+        if evidence_mode != mode and not (mode == "lidar" and evidence_mode == "arkit"):
+            return None
+        return evidence
 
     def estimate_from_reference_object(self, reference_object: dict[str, Any] | Any) -> ScaleEstimateResult:
         payload = self._as_payload(reference_object)

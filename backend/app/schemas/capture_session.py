@@ -23,6 +23,8 @@ class CaptureDeviceMetadata(BaseModel):
     motion: dict[str, Any] | None = None
     timestamp: str | None = None
     reference_mode: str | None = None
+    capture_mode: str = "browser_guidance"
+    ar_evidence: dict[str, Any] | None = None
 
 
 class CaptureFrameQualityRead(BaseModel):

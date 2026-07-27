@@ -9,6 +9,8 @@ class DepthValidationService:
     supported_modes = {"arcore", "arkit", "lidar", "monocular", "uploaded_depth"}
     minimum_plane_confidence = 0.80
     minimum_depth_confidence = 0.80
+    minimum_distance_to_foot_plane_mm = 250.0
+    maximum_distance_to_foot_plane_mm = 2500.0
 
     def validate(self, depth_metadata: dict[str, Any] | DepthMetadata | None) -> DepthQualityResult:
         metadata = self.normalize(depth_metadata)
@@ -45,6 +47,9 @@ class DepthValidationService:
         if metadata.distance_to_foot_plane_mm is None:
             issues.append("Distance to foot plane is missing.")
             instructions.append("Provide distance to the foot plane from the depth capture.")
+        elif not self.minimum_distance_to_foot_plane_mm <= metadata.distance_to_foot_plane_mm <= self.maximum_distance_to_foot_plane_mm:
+            issues.append("Distance to foot plane is outside the supported capture range.")
+            instructions.append("Hold the phone above the foot at the guided capture distance.")
 
         confidence = min(metadata.depth_confidence, metadata.plane_confidence)
         if issues:
