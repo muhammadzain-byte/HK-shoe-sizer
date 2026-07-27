@@ -8,14 +8,17 @@ import { StatusBadge } from "@/components/status-badge";
 import {
   detectReferenceObject,
   estimateScale,
+  getAnalysisJob,
   getScan,
   requestShoeSize,
   runFullPipeline,
+  startAnalysisJob,
   validateScanImage,
 } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import type {
   FullPipelineResponse,
+  AnalysisJob,
   PipelineStageResult,
   ReferenceObjectDetectionResponse,
   ReferenceObjectMode,
@@ -42,6 +45,7 @@ export function ScanDetailView({ scanId }: { scanId: string }) {
   const [isDetectingReference, setIsDetectingReference] = useState(false);
   const [isRequestingSize, setIsRequestingSize] = useState(false);
   const [isRunningPipeline, setIsRunningPipeline] = useState(false);
+  const [analysisJob, setAnalysisJob] = useState<AnalysisJob | null>(null);
 
   const loadScan = async () => {
     if (!token) {
@@ -163,30 +167,30 @@ export function ScanDetailView({ scanId }: { scanId: string }) {
     setIsRunningPipeline(true);
     setError(null);
     try {
-      setPipeline(
-        await runFullPipeline(token, scanId, {
-          reference_object_detection:
-            referenceMode === "none"
-              ? undefined
-              : {
-                  enabled: true,
-                  reference_mode: referenceMode,
-                },
-          run_shoe_size: true,
-          shoe_size_request: {
-            region: "EU",
-            gender: "women",
-            fit_preference: "regular",
-            shoe_type: "flat",
-          },
-        }),
-      );
+      setAnalysisJob(await startAnalysisJob(token, scanId));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not run full analysis.");
     } finally {
       setIsRunningPipeline(false);
     }
   };
+
+  useEffect(() => {
+    if (!token || !analysisJob || !["queued", "running"].includes(analysisJob.status)) return;
+    const timer = window.setInterval(() => {
+      void getAnalysisJob(token, analysisJob.id)
+        .then(async (job) => {
+          setAnalysisJob(job);
+          if (job.status === "completed") {
+            await loadScan();
+          }
+        })
+        .catch((caught) => setError(caught instanceof Error ? caught.message : "Could not check analysis progress."));
+    }, 1500);
+    return () => window.clearInterval(timer);
+    // loadScan is stable for this polling lifecycle and should not reset the interval.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [analysisJob?.id, analysisJob?.status, token]);
 
   const stageLabel = (stage: PipelineStageResult | null) => stage?.stage_status.replaceAll("_", " ") ?? "not run";
 
@@ -299,7 +303,7 @@ export function ScanDetailView({ scanId }: { scanId: string }) {
               <div>
                 <h2 className="text-lg font-semibold">Full analysis</h2>
                 <p className="mt-1 text-sm text-zinc-500">
-                  Runs the safe capture, measurement, scale, and size gates in order.
+                  Runs validation and measurement in the background. Scale and size remain separate safety gates.
                 </p>
               </div>
               <button
@@ -308,9 +312,22 @@ export function ScanDetailView({ scanId }: { scanId: string }) {
                 onClick={runAnalysis}
                 disabled={isRunningPipeline}
               >
-                {isRunningPipeline ? "Running..." : "Run full analysis"}
+                {isRunningPipeline && !analysisJob ? "Starting..." : "Run measurement analysis"}
               </button>
             </div>
+            {analysisJob && (
+              <div className="mt-4 rounded-md border border-zinc-200 bg-zinc-50 p-3 text-sm" aria-live="polite">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-semibold capitalize">Analysis {analysisJob.status}</p>
+                  <p className="text-zinc-600">{analysisJob.progress}%</p>
+                </div>
+                <div className="mt-2 h-2 overflow-hidden rounded bg-zinc-200">
+                  <div className="h-full bg-sage transition-all" style={{ width: `${analysisJob.progress}%` }} />
+                </div>
+                {analysisJob.error && <p className="mt-2 text-red-700">{analysisJob.error}</p>}
+                {analysisJob.status === "completed" && <p className="mt-2 text-zinc-600">Measurement completed. Continue with scale estimation when ready.</p>}
+              </div>
+            )}
             <div className="mt-4 grid gap-3 text-sm sm:grid-cols-5">
               {[
                 ["Capture", pipeline?.capture_quality ?? null],
