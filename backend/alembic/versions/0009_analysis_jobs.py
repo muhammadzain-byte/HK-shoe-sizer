@@ -1,7 +1,7 @@
 """add persistent analysis jobs
 
 Revision ID: 0009_analysis_jobs
-Revises: 0008_validation_benchmark_results
+Revises: 0008_validation_benchmarks
 """
 
 from collections.abc import Sequence
@@ -11,7 +11,7 @@ from alembic import op
 from sqlalchemy.dialects import postgresql
 
 revision: str = "0009_analysis_jobs"
-down_revision: str | None = "0008_validation_benchmark_results"
+down_revision: str | None = "0008_validation_benchmarks"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
