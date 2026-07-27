@@ -57,6 +57,10 @@ type RequestOptions = RequestInit & {
   timeoutMs?: number;
 };
 
+function isLocalHostname(hostname: string) {
+  return hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1";
+}
+
 export function getRuntimeApiConfig(): Promise<RuntimeApiConfig> {
   if (!runtimeConfigPromise) {
     runtimeConfigPromise = loadRuntimeApiConfig();
@@ -85,6 +89,10 @@ async function loadRuntimeApiConfig(): Promise<RuntimeApiConfig> {
     }
     const payload = (await response.json()) as Partial<RuntimeApiConfig>;
     if (!payload.api_base_url || !payload.health_url) {
+      return fallbackRuntimeConfig;
+    }
+    const configuredApiUrl = new URL(payload.api_base_url, window.location.origin);
+    if (!isLocalHostname(window.location.hostname) && isLocalHostname(configuredApiUrl.hostname)) {
       return fallbackRuntimeConfig;
     }
     return {
