@@ -1,4 +1,5 @@
 from app.models.audit_log import AuditLog
+from app.models.analysis_job import AnalysisJob
 from app.models.capture_session import CaptureSession
 from app.models.foot_scan import FootScan
 from app.models.foot_measurement import FootMeasurement
@@ -11,6 +12,7 @@ from app.models.validation_case import ValidationCase
 
 __all__ = [
     "AuditLog",
+    "AnalysisJob",
     "CaptureSession",
     "FootScan",
     "FootMeasurement",

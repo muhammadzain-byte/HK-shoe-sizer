@@ -2,7 +2,7 @@ import json
 from typing import Any
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, HTTPException, UploadFile, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -23,6 +23,7 @@ from app.schemas.ai import (
     MeasurementResponse,
 )
 from app.schemas.pipeline import FullPipelineRequest, FullPipelineResponse
+from app.schemas.analysis_job import AnalysisJobCreate, AnalysisJobRead
 from app.schemas.reference_object import (
     ReferenceObjectDetectionRequest,
     ReferenceObjectDetectionResponse,
@@ -30,6 +31,7 @@ from app.schemas.reference_object import (
 from app.schemas.scale import ScaleEstimateRequest, ScaleEstimateResponse
 from app.schemas.shoe_size import ShoeSizeRequest, ShoeSizeResponse
 from app.services.ai_processing_service import AIProcessingService
+from app.services.analysis_job_service import AnalysisJobService
 from app.services.capture_metadata_service import CaptureMetadataService
 from app.services.capture_quality_service import CaptureQualityService
 from app.services.capture_consensus_service import CaptureConsensusService
@@ -435,6 +437,29 @@ def measure_scan(
         },
         confidence_score=result.confidence_score,
     )
+
+
+@router.post("/scans/{scan_id}/analysis-jobs", response_model=AnalysisJobRead, status_code=status.HTTP_202_ACCEPTED)
+def create_analysis_job(
+    scan_id: UUID,
+    background_tasks: BackgroundTasks,
+    payload: AnalysisJobCreate | None = None,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> AnalysisJobRead:
+    job = AnalysisJobService(db).create(current_user, scan_id)
+    if job.status == "queued":
+        background_tasks.add_task(AnalysisJobService.run, job.id)
+    return AnalysisJobRead.model_validate(job)
+
+
+@router.get("/analysis-jobs/{job_id}", response_model=AnalysisJobRead)
+def get_analysis_job(
+    job_id: UUID,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> AnalysisJobRead:
+    return AnalysisJobRead.model_validate(AnalysisJobService(db).get(current_user, job_id))
 
 
 @router.get("/scans/{scan_id}/status", response_model=AIStatusResponse)

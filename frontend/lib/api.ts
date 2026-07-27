@@ -5,6 +5,7 @@ import type {
   FullPipelineResponse,
   CaptureSessionAttachPayload,
   ApiHealthResponse,
+  AnalysisJob,
   CaptureSessionRead,
   CaptureDeviceMetadata,
   CaptureQualityResponse,
@@ -224,6 +225,18 @@ export function validateScanImage(token: string, scanId: string) {
     method: "POST",
     token,
   });
+}
+
+export function startAnalysisJob(token: string, scanId: string) {
+  return apiFetch<AnalysisJob>(`/ai/scans/${scanId}/analysis-jobs`, {
+    method: "POST",
+    token,
+    body: JSON.stringify({ job_type: "measurement" }),
+  });
+}
+
+export function getAnalysisJob(token: string, jobId: string) {
+  return apiFetch<AnalysisJob>(`/ai/analysis-jobs/${jobId}`, { token });
 }
 
 export function estimateScale(token: string, scanId: string, payload: ScaleEstimateRequest = {}) {

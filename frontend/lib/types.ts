@@ -108,6 +108,18 @@ export type ImageValidationResponse = {
 
 export type CaptureStatus = "ready" | "needs_adjustment" | "reject";
 
+export type AnalysisJob = {
+  id: string;
+  scan_id: string;
+  job_type: "measurement";
+  status: "queued" | "running" | "completed" | "failed";
+  progress: number;
+  result: Record<string, unknown> | null;
+  error: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
 export type CaptureDeviceMetadata = {
   user_agent: string;
   viewport_width: number;
