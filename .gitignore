@@ -63,3 +63,7 @@ npm-debug.log*
 Thumbs.db
 .idea/
 .vscode/
+
+# Native Android build output
+/mobile/android-arcore-capture/.gradle/
+/mobile/android-arcore-capture/**/build/
