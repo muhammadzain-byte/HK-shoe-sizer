@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AlertTriangle, Aperture, CheckCircle2, Footprints, ScanLine, ShieldCheck, RotateCcw, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ProtectedRoute } from "@/components/protected-route";
 import { attachCaptureSession, checkCaptureQuality } from "@/lib/api";
@@ -51,6 +51,7 @@ export function CameraCapture() {
   const [localInstruction, setLocalInstruction] = useState("Place one bare foot inside the guide.");
   const [captureStep, setCaptureStep] = useState<"prepare" | "floor" | "position" | "review">("prepare");
   const [floorCheckProgress, setFloorCheckProgress] = useState(0);
+  const [cameraReady, setCameraReady] = useState(false);
   const [orientation, setOrientation] = useState<{ alpha: number | null; beta: number | null; gamma: number | null }>({
     alpha: null,
     beta: null,
@@ -74,10 +75,10 @@ export function CameraCapture() {
       ? storedFootSide
       : "unknown";
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function startCamera() {
+  const startCamera = useCallback(async () => {
+      setCameraReady(false);
+      setError(null);
+      streamRef.current?.getTracks().forEach((track) => track.stop());
       if (!navigator.mediaDevices?.getUserMedia) {
         setError("Camera access is not available in this browser.");
         return;
@@ -91,10 +92,6 @@ export function CameraCapture() {
           },
           audio: false,
         });
-        if (cancelled) {
-          stream.getTracks().forEach((track) => track.stop());
-          return;
-        }
         streamRef.current = stream;
         const settings = stream.getVideoTracks()[0]?.getSettings();
         if (settings?.facingMode) {
@@ -102,19 +99,20 @@ export function CameraCapture() {
         }
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          await videoRef.current.play();
         }
       } catch {
         setError("Could not access the camera. Check browser permissions and try again.");
       }
-    }
+  }, []);
 
+  useEffect(() => {
     void startCamera();
 
     return () => {
-      cancelled = true;
       streamRef.current?.getTracks().forEach((track) => track.stop());
     };
-  }, []);
+  }, [startCamera]);
 
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
@@ -320,19 +318,14 @@ export function CameraCapture() {
 
   const capture = async () => {
     try {
-      const frames = [await captureFrame()];
-      await new Promise((resolve) => window.setTimeout(resolve, 180));
-      frames.push(await captureFrame());
-      await new Promise((resolve) => window.setTimeout(resolve, 180));
-      frames.push(await captureFrame());
-      const blob = frames[1];
+      const blob = await captureFrame();
         if (previewUrl) {
           URL.revokeObjectURL(previewUrl);
         }
         setCapturedBlob(blob);
         setPreviewUrl(URL.createObjectURL(blob));
         setCaptureStep("review");
-      void checkQuality(blob, [frames[0], frames[2]]);
+      void checkQuality(blob);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not capture the frame.");
     }
@@ -349,6 +342,7 @@ export function CameraCapture() {
     setTelemetryWarning(null);
     setProgress(0);
     setCaptureStep("position");
+    if (!streamRef.current?.active) void startCamera();
   };
 
   const beginFloorCheck = () => {
@@ -358,10 +352,23 @@ export function CameraCapture() {
     const startedAt = Date.now();
     const timer = window.setInterval(() => {
       const elapsed = Date.now() - startedAt;
-      const progress = Math.min(100, Math.round((elapsed / 2200) * 100));
+      const video = videoRef.current;
+      const hasFrame = Boolean(video?.videoWidth && video.videoHeight && cameraReady);
+      const tilt = Math.max(Math.abs(orientation.beta ?? 0), Math.abs(orientation.gamma ?? 0));
+      if (!hasFrame) {
+        setFloorCheckProgress(Math.min(70, Math.round((elapsed / 3000) * 70)));
+        if (elapsed > 3500) {
+          window.clearInterval(timer);
+          setError("Camera preview is not ready. Reopen the camera and allow permission.");
+          setCaptureStep("prepare");
+        }
+        return;
+      }
+      const progress = Math.min(100, Math.round((elapsed / 900) * 100));
       setFloorCheckProgress(progress);
       if (progress < 100) return;
       window.clearInterval(timer);
+      if (tilt > 32) setLocalInstruction("Camera is ready. Hold phone directly above the foot.");
       setCaptureStep("position");
     }, 80);
   };
@@ -432,7 +439,7 @@ export function CameraCapture() {
               // eslint-disable-next-line @next/next/no-img-element
               <img className="h-full w-full object-contain" src={previewUrl} alt="Captured foot preview" />
             ) : (
-              <video ref={videoRef} className="h-full w-full object-cover" autoPlay muted playsInline />
+              <video ref={videoRef} className="h-full w-full object-cover" autoPlay muted playsInline onLoadedMetadata={() => setCameraReady(true)} />
             )}
             {!previewUrl && captureStep === "position" && (
               <div className="pointer-events-none absolute flex aspect-[3/4] w-[72%] max-w-sm flex-col overflow-hidden rounded-[44%] border-2 border-dashed border-white/70 shadow-[0_0_0_9999px_rgba(0,0,0,0.16)]">
@@ -470,8 +477,8 @@ export function CameraCapture() {
               <div className="absolute inset-0 grid place-items-center bg-zinc-950/65 p-7 text-center">
                 <div className="w-full max-w-xs">
                   <ScanLine className="mx-auto h-9 w-9 animate-pulse text-emerald-300" aria-hidden="true" />
-                  <h1 className="mt-4 text-xl font-semibold">Checking floor and phone stability</h1>
-                  <p className="mt-2 text-sm leading-6 text-white/75">Keep the phone steady over a visible, textured floor.</p>
+                  <h1 className="mt-4 text-xl font-semibold">Checking camera readiness</h1>
+                  <p className="mt-2 text-sm leading-6 text-white/75">Confirming the rear camera is live and the phone is steady.</p>
                   <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/15"><div className="h-full bg-emerald-300 transition-[width]" style={{ width: `${floorCheckProgress}%` }} /></div>
                   <p className="mt-2 text-xs text-white/55">Browser guidance only. Trusted no-card scale requires supported AR capture.</p>
                 </div>

@@ -304,7 +304,7 @@ export function checkCaptureQuality(
     method: "POST",
     token,
     body: form,
-    timeoutMs: 30000,
+    timeoutMs: 12000,
   });
 }
 
