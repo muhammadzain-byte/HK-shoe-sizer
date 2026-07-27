@@ -309,7 +309,9 @@ export function checkScanCaptureQuality(
     method: "POST",
     token,
     body: JSON.stringify(payload),
-    timeoutMs: 30000,
+    // Capture-quality is intentionally lightweight. A short timeout prevents
+    // the upload flow from appearing frozen when connectivity is interrupted.
+    timeoutMs: 15000,
   });
 }
 

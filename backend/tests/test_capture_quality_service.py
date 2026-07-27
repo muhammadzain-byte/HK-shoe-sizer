@@ -131,3 +131,14 @@ def test_multiple_feet_rejects() -> None:
     assert result.capture_status == "reject"
     assert "multiple_feet_detected" in result.issues
     assert "Keep one bare foot only." in result.instructions
+
+
+def test_fast_capture_mode_does_not_initialise_sam2() -> None:
+    image = Image.new("RGB", (600, 900), "white")
+    pixels = np.asarray(image).copy()
+    pixels[150:760, 220:390] = (130, 90, 70)
+    result = CaptureQualityService(enable_segmentation=False)._fast_segment(Image.fromarray(pixels))
+
+    assert result is not None
+    assert result.model_name == "fast_capture_quality"
+    assert result.foot_bbox is not None

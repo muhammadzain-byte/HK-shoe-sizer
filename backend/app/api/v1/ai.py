@@ -212,7 +212,9 @@ async def capture_quality_for_image(
         frames.append(await supporting_image.read())
     if len(frames) > 3:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="A maximum of three frames is supported.")
-    quality_service = CaptureQualityService()
+    # This is the live-camera preflight. Keep it lightweight so a slow model
+    # download or CPU inference can never leave the mobile UI on "Checking".
+    quality_service = CaptureQualityService(enable_segmentation=False)
     analyses = [quality_service.analyze_bytes(frame, device_metadata=metadata) for frame in frames]
     consensus = CaptureConsensusService().combine(analyses)
     quality_payload = CaptureQualityResult.model_validate(

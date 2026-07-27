@@ -183,6 +183,7 @@ export function CameraCapture() {
       return;
     }
     setIsCheckingQuality(true);
+    setError(null);
     setCaptureQuality(null);
     setCaptureSessionId(null);
     setTelemetryWarning(null);
@@ -201,7 +202,48 @@ export function CameraCapture() {
         setCaptureQuality(result);
       }
     } catch (caught) {
-      try {
+      const failedMessage = caught instanceof Error ? caught.message : "Capture quality check failed.";
+      // A second full quality request previously doubled the wait on slow
+      // networks. Persisting telemetry is useful, but it must not trap a user
+      // on the checking state.
+      if (failedMessage.toLowerCase().includes("timed out")) {
+        setError("Capture check took too long. Retake the photo or continue with review.");
+        setCaptureQuality({
+          capture_status: "needs_adjustment",
+          score: 0,
+          issues: ["capture_quality_timeout"],
+          instructions: ["Retake the photo with one full foot clearly visible."],
+          frame_quality: { blur_score: 0, lighting_score: 0, overexposure_score: 0 },
+          foot_visibility: {
+            foot_detected: false,
+            one_foot_only: false,
+            toes_visible: false,
+            heel_visible: false,
+            full_foot_visible: false,
+            lower_leg_ratio: 1,
+            toe_margin_ratio: 0,
+            heel_margin_ratio: 0,
+            side_margin_ratio: 0,
+          },
+          pose_quality: {
+            top_down_score: 0,
+            rotation_angle_degrees: 0,
+            perspective_risk: 1,
+            foot_flatness_risk: 1,
+          },
+          distance_quality: {
+            foot_frame_coverage: 0,
+            too_close: false,
+            too_far: true,
+            distance_confidence: 0,
+          },
+          guidance: {
+            primary_instruction: "Capture check timed out. Retake the photo or use review mode.",
+            secondary_instructions: [],
+          },
+        });
+      } else {
+        try {
         const fallback = await checkCaptureQuality(token, {
           file: blob,
           fileName: `capture-quality-${Date.now()}.jpg`,
@@ -211,7 +253,7 @@ export function CameraCapture() {
         });
         setCaptureQuality("capture_quality" in fallback ? fallback.capture_quality : fallback);
         setTelemetryWarning("Capture guidance worked, but telemetry storage is unavailable.");
-      } catch {
+        } catch {
         setCaptureQuality({
           capture_status: "needs_adjustment",
           score: 0,
@@ -246,6 +288,7 @@ export function CameraCapture() {
             secondary_instructions: [],
           },
         });
+        }
       }
     } finally {
       setIsCheckingQuality(false);

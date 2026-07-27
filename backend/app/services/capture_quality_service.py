@@ -1,12 +1,17 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from decimal import Decimal
 from io import BytesIO
 from typing import Any
 
 from PIL import Image, ImageStat
 
-from app.services.ai.contracts import BoundingBox, FootSegmentationService, SegmentationResult
+from app.services.ai.contracts import (
+    BoundingBox,
+    FootSegmentationService,
+    SegmentationResult,
+)
 
 
 @dataclass(frozen=True)
@@ -41,8 +46,14 @@ class CaptureQualityAnalysis:
 class CaptureQualityService:
     """Guided-capture quality gate for pre-measurement foot images."""
 
-    def __init__(self, foot_segmentation_service: FootSegmentationService | None = None) -> None:
+    def __init__(
+        self,
+        foot_segmentation_service: FootSegmentationService | None = None,
+        *,
+        enable_segmentation: bool = True,
+    ) -> None:
         self.foot_segmentation_service = foot_segmentation_service
+        self.enable_segmentation = enable_segmentation
 
     def analyze_bytes(
         self,
@@ -85,7 +96,7 @@ class CaptureQualityService:
 
         segmentation: SegmentationResult | None = None
         try:
-            segmentation = self._segment(image)
+            segmentation = self._segment(image) if self.enable_segmentation else self._fast_segment(image)
         except Exception:
             issues.append("segmentation_failed")
             instructions.append("Place one bare foot clearly inside the guide.")
@@ -331,6 +342,58 @@ class CaptureQualityService:
 
             self.foot_segmentation_service = SAM2FootSegmentationService()
         return self.foot_segmentation_service.segment(image)
+
+    def _fast_segment(self, image: Image.Image) -> SegmentationResult | None:
+        """Estimate a foreground foot region without loading the measurement model.
+
+        Capture guidance must return promptly on a phone. Full SAM 2 inference is
+        deliberately deferred to the explicit analysis pipeline after upload.
+        """
+        import cv2
+        import numpy as np
+
+        rgb = np.asarray(image.convert("RGB"))
+        gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
+        _, threshold = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+        kernel = np.ones((7, 7), dtype=np.uint8)
+        threshold = cv2.morphologyEx(threshold, cv2.MORPH_OPEN, kernel)
+        threshold = cv2.morphologyEx(threshold, cv2.MORPH_CLOSE, kernel)
+        contours, _ = cv2.findContours(threshold, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        image_area = max(image.width * image.height, 1)
+        candidates = []
+        for contour in contours:
+            area = float(cv2.contourArea(contour))
+            x, y, width, height = cv2.boundingRect(contour)
+            area_ratio = area / image_area
+            if area_ratio < 0.025 or area_ratio > 0.82 or width < 20 or height < 20:
+                continue
+            candidates.append((area, BoundingBox(x=x, y=y, width=width, height=height)))
+
+        if not candidates:
+            return None
+        candidates.sort(key=lambda candidate: candidate[0], reverse=True)
+        _, bbox = candidates[0]
+        return SegmentationResult(
+            mask_uri=None,
+            confidence_score=Decimal("0.55"),
+            model_name="fast_capture_quality",
+            foot_count=min(len(candidates), 2),
+            foot_bbox=bbox,
+            edge_contact_detected=self._bbox_touches_edge(bbox, image.size),
+            feet=None,
+        )
+
+    def _bbox_touches_edge(self, bbox: BoundingBox, image_size: tuple[int, int]) -> bool:
+        width, height = image_size
+        margin_x = max(int(width * 0.025), 1)
+        margin_y = max(int(height * 0.025), 1)
+        return (
+            bbox.x <= margin_x
+            or bbox.y <= margin_y
+            or bbox.x + bbox.width >= width - margin_x
+            or bbox.y + bbox.height >= height - margin_y
+        )
 
     def _unreadable_result(self) -> CaptureQualityAnalysis:
         return CaptureQualityAnalysis(

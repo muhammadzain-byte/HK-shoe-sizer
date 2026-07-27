@@ -20,7 +20,10 @@ class AIProcessingService:
         self.db = db
         self.storage_service = S3StorageService()
         self._image_validation_service: ImageValidationService | None = None
-        self.capture_quality_service = CaptureQualityService()
+        # Capture checks run during the interactive phone flow. They must stay
+        # responsive and must not initialise SAM 2; full inference happens only
+        # after the user explicitly requests analysis.
+        self.capture_quality_service = CaptureQualityService(enable_segmentation=False)
         self.measurement_service = MeasurementService()
 
     @property
