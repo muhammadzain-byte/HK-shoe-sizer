@@ -257,6 +257,8 @@ class CaptureMetadataService:
                 "motion": session.motion or {},
                 "timestamp": (session.raw_device_metadata or {}).get("timestamp"),
                 "reference_mode": (session.raw_device_metadata or {}).get("reference_mode"),
+                "capture_mode": (session.raw_device_metadata or {}).get("capture_mode", "browser_guidance"),
+                "ar_evidence": (session.raw_device_metadata or {}).get("ar_evidence"),
             },
             created_at=session.created_at,
         )

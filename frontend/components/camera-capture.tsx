@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { AlertTriangle, Aperture, CheckCircle2, RotateCcw, X } from "lucide-react";
+import { AlertTriangle, Aperture, CheckCircle2, Footprints, ScanLine, ShieldCheck, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { ProtectedRoute } from "@/components/protected-route";
@@ -49,6 +49,8 @@ export function CameraCapture() {
   const [telemetryWarning, setTelemetryWarning] = useState<string | null>(null);
   const [localStatus, setLocalStatus] = useState<CaptureStatus>("needs_adjustment");
   const [localInstruction, setLocalInstruction] = useState("Place one bare foot inside the guide.");
+  const [captureStep, setCaptureStep] = useState<"prepare" | "floor" | "position" | "review">("prepare");
+  const [floorCheckProgress, setFloorCheckProgress] = useState(0);
   const [orientation, setOrientation] = useState<{ alpha: number | null; beta: number | null; gamma: number | null }>({
     alpha: null,
     beta: null,
@@ -175,6 +177,8 @@ export function CameraCapture() {
       motion: {},
       timestamp: new Date().toISOString(),
       reference_mode: referenceMode,
+      capture_mode: "browser_guidance",
+      ar_evidence: null,
     };
   };
 
@@ -327,6 +331,7 @@ export function CameraCapture() {
         }
         setCapturedBlob(blob);
         setPreviewUrl(URL.createObjectURL(blob));
+        setCaptureStep("review");
       void checkQuality(blob, [frames[0], frames[2]]);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Could not capture the frame.");
@@ -343,6 +348,22 @@ export function CameraCapture() {
     setCaptureSessionId(null);
     setTelemetryWarning(null);
     setProgress(0);
+    setCaptureStep("position");
+  };
+
+  const beginFloorCheck = () => {
+    setError(null);
+    setFloorCheckProgress(0);
+    setCaptureStep("floor");
+    const startedAt = Date.now();
+    const timer = window.setInterval(() => {
+      const elapsed = Date.now() - startedAt;
+      const progress = Math.min(100, Math.round((elapsed / 2200) * 100));
+      setFloorCheckProgress(progress);
+      if (progress < 100) return;
+      window.clearInterval(timer);
+      setCaptureStep("position");
+    }, 80);
   };
 
   const uploadCapture = async () => {
@@ -394,27 +415,16 @@ export function CameraCapture() {
             <span className="h-10 w-10" />
           </div>
 
-          <section className="mt-5 border-y border-white/10 bg-white/[0.04] py-4">
-            <label className="text-sm font-semibold" htmlFor="reference-mode">
-              Reference object
-            </label>
-            <select
-              id="reference-mode"
-              className="mt-2 h-10 w-full rounded-md border border-white/20 bg-zinc-900 px-3 text-sm text-white"
-              value={referenceMode}
-              onChange={(event) => setReferenceMode(event.target.value as ReferenceObjectMode)}
-              disabled={Boolean(previewUrl)}
-            >
-              <option value="none">No reference object</option>
-              <option value="credit_card">Credit card</option>
-              <option value="a4_paper">A4 paper</option>
-              <option value="calibration_card">Calibration card</option>
-              <option value="custom_object">Custom object</option>
-            </select>
-            <p className="mt-2 text-xs leading-5 text-white/70">
-              Use a reference object for accurate real-world measurement. Place it flat beside the
-              foot, fully visible, not under the foot or held in your hand.
-            </p>
+          <section className="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
+            {[
+              ["1", "Floor", captureStep === "prepare" || captureStep === "floor"],
+              ["2", "Foot", captureStep === "position"],
+              ["3", "Review", captureStep === "review"],
+            ].map(([number, label, active]) => (
+              <div key={label as string} className={`border-b-2 pb-2 ${active ? "border-amber-400 text-amber-200" : "border-white/15 text-white/45"}`}>
+                <span className="mr-1 font-bold">{number}</span>{label}
+              </div>
+            ))}
           </section>
 
           <section className="relative my-5 grid min-h-[52vh] flex-1 place-items-center overflow-hidden rounded-xl border border-white/15 bg-zinc-900 shadow-2xl shadow-black/20">
@@ -424,7 +434,7 @@ export function CameraCapture() {
             ) : (
               <video ref={videoRef} className="h-full w-full object-cover" autoPlay muted playsInline />
             )}
-            {!previewUrl && (
+            {!previewUrl && captureStep === "position" && (
               <div className="pointer-events-none absolute flex aspect-[3/4] w-[72%] max-w-sm flex-col overflow-hidden rounded-[44%] border-2 border-dashed border-white/70 shadow-[0_0_0_9999px_rgba(0,0,0,0.16)]">
                 <div className="grid flex-[1.05] place-items-center border-b border-white/35 bg-sky-400/10">
                   <span className="rounded bg-zinc-950/65 px-2 py-1 text-xs font-semibold text-white/85">Toes</span>
@@ -437,14 +447,37 @@ export function CameraCapture() {
                 <div className="absolute inset-y-0 right-[8%] border-r border-white/30" />
               </div>
             )}
-            {!previewUrl && referenceMode !== "none" && (
+            {!previewUrl && captureStep === "position" && referenceMode !== "none" && (
               <div className="pointer-events-none absolute right-[7%] top-[31%] grid aspect-[1.58/1] w-[24%] max-w-40 place-items-center rounded-md border-2 border-dashed border-cyan-200/85 bg-cyan-300/10">
                 <span className="rounded bg-zinc-950/70 px-2 py-1 text-[11px] font-semibold text-white/85">
                   Reference
                 </span>
               </div>
             )}
-            {!previewUrl && (
+            {!previewUrl && captureStep === "prepare" && (
+              <div className="absolute inset-0 grid place-items-center bg-zinc-950/75 p-7 text-center">
+                <div className="max-w-xs">
+                  <Footprints className="mx-auto h-9 w-9 text-amber-300" aria-hidden="true" />
+                  <h1 className="mt-4 text-2xl font-semibold">Start your foot scan</h1>
+                  <p className="mt-2 text-sm leading-6 text-white/75">Sit comfortably, remove shoe and sock, then point the camera at a textured floor.</p>
+                  <button className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-amber-400 px-5 text-sm font-bold text-zinc-950" type="button" onClick={beginFloorCheck}>
+                    <ScanLine className="h-4 w-4" aria-hidden="true" /> Check floor
+                  </button>
+                </div>
+              </div>
+            )}
+            {!previewUrl && captureStep === "floor" && (
+              <div className="absolute inset-0 grid place-items-center bg-zinc-950/65 p-7 text-center">
+                <div className="w-full max-w-xs">
+                  <ScanLine className="mx-auto h-9 w-9 animate-pulse text-emerald-300" aria-hidden="true" />
+                  <h1 className="mt-4 text-xl font-semibold">Checking floor and phone stability</h1>
+                  <p className="mt-2 text-sm leading-6 text-white/75">Keep the phone steady over a visible, textured floor.</p>
+                  <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/15"><div className="h-full bg-emerald-300 transition-[width]" style={{ width: `${floorCheckProgress}%` }} /></div>
+                  <p className="mt-2 text-xs text-white/55">Browser guidance only. Trusted no-card scale requires supported AR capture.</p>
+                </div>
+              </div>
+            )}
+            {!previewUrl && captureStep === "position" && (
               <div className="absolute left-4 right-4 top-4 rounded-md border border-white/15 bg-zinc-950/75 px-4 py-3">
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-sm font-semibold">{localStatus === "ready" ? "Frame aligned" : "Align your frame"}</span>
@@ -455,11 +488,7 @@ export function CameraCapture() {
                   />
                 </div>
                 <p className="mt-1 text-sm text-white/80">{localInstruction}</p>
-                {referenceMode !== "none" && (
-                  <p className="mt-1 text-xs text-cyan-100">
-                    Keep the {referenceMode.replaceAll("_", " ")} visible in the reference zone.
-                  </p>
-                )}
+                <p className="mt-1 text-xs text-cyan-100">For browser sizing, keep a calibration card or credit card beside the foot.</p>
               </div>
             )}
           </section>
@@ -545,7 +574,7 @@ export function CameraCapture() {
                   {isCheckingQuality ? "Checking" : "Use photo"}
                 </button>
               </>
-            ) : (
+            ) : captureStep === "position" ? (
               <div className="flex flex-col items-center gap-3">
                 <button
                   className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-zinc-950 disabled:opacity-50"
@@ -562,8 +591,18 @@ export function CameraCapture() {
                   </button>
                 )}
               </div>
-            )}
+            ) : null}
           </div>
+          {!previewUrl && captureStep === "position" && (
+            <button
+              className="mt-4 flex w-full items-center justify-between border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-sm text-white/80"
+              type="button"
+              onClick={() => setReferenceMode(referenceMode === "none" ? "credit_card" : "none")}
+            >
+              <span><ShieldCheck className="mr-2 inline h-4 w-4 text-cyan-200" aria-hidden="true" />{referenceMode === "none" ? "Use calibration card for real-world sizing" : "Calibration card selected"}</span>
+              <span className="text-xs text-cyan-200">{referenceMode === "none" ? "Add" : "Remove"}</span>
+            </button>
+          )}
           <canvas ref={canvasRef} className="hidden" />
         </div>
       </main>

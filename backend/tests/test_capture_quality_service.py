@@ -7,6 +7,7 @@ from PIL import Image
 
 from app.services.ai.contracts import BoundingBox, SegmentedFoot, SegmentationResult
 from app.services.capture_quality_service import CaptureQualityService
+from app.schemas.ai import CaptureDeviceMetadata
 
 
 class FakeSegmentationService:
@@ -142,3 +143,15 @@ def test_fast_capture_mode_does_not_initialise_sam2() -> None:
     assert result is not None
     assert result.model_name == "fast_capture_quality"
     assert result.foot_bbox is not None
+
+
+def test_capture_metadata_keeps_native_ar_evidence_separate_from_browser_mode() -> None:
+    metadata = CaptureDeviceMetadata.model_validate(
+        {
+            "capture_mode": "arcore",
+            "ar_evidence": {"plane_confidence": 0.94, "distance_to_floor_mm": 780},
+        }
+    )
+
+    assert metadata.capture_mode == "arcore"
+    assert metadata.ar_evidence == {"plane_confidence": 0.94, "distance_to_floor_mm": 780}

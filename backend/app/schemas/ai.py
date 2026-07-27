@@ -113,6 +113,10 @@ class CaptureDeviceMetadata(BaseModel):
     motion: dict | None = None
     timestamp: str | None = None
     reference_mode: str | None = None
+    # Native capture clients may provide ARCore/ARKit evidence here. Browser
+    # clients must report browser_guidance and never imply metric AR support.
+    capture_mode: str = "browser_guidance"
+    ar_evidence: dict | None = None
 
 
 class CaptureQualityResult(BaseModel):

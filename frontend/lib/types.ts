@@ -124,6 +124,8 @@ export type CaptureDeviceMetadata = {
   motion: Record<string, unknown>;
   timestamp: string;
   reference_mode?: ReferenceObjectMode;
+  capture_mode?: "browser_guidance" | "arcore" | "arkit" | "lidar";
+  ar_evidence?: Record<string, unknown> | null;
 };
 
 export type CaptureQualityResult = {
